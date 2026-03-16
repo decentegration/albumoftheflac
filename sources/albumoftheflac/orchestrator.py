@@ -4,6 +4,7 @@ from pathlib import Path
 
 # Third party
 from loguru import logger
+from unidecode import unidecode
 
 # Local
 from albumoftheflac.aoty_parsing import (
@@ -28,8 +29,8 @@ async def set_correct_tags(directory: Path):
     logger.debug(f"artist and album tags: {artist, album}")
 
     # make artist and album tags suitable for links
-    artist_tag = replace_spaces_with_pluses(artist)
-    album_tag = replace_spaces_with_pluses(album)
+    artist_tag = replace_spaces_with_pluses(unidecode(artist))
+    album_tag = replace_spaces_with_pluses(unidecode(album))
     logger.debug(f"artist and album tags for link: {artist_tag}, {album_tag}")
 
     # get album link from search query
