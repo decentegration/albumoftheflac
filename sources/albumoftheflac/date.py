@@ -12,19 +12,12 @@ def parse_date(date: str) -> str:
     date = " ".join(date.split())
     date = date.strip()
 
-    formats = ["%B %d, %Y", "%B %Y", "%Y"]
+    formats = [("%B %d, %Y", "%Y-%m-%d"), ("%B %Y", "%Y-%m"), ("%Y", "%Y")]
 
-    for format in formats:
+    for input_format, output_format in formats:
         try:
-            date_object = datetime.strptime(date, format)
-
-            if format == "%B %Y":
-                date_object = date_object.replace(day=0)
-
-            if format == "%Y":
-                date_object = date_object.replace(day=0, month=0)
-
-            formatted_date = date_object.strftime("%Y-%m-%d")
+            date_object = datetime.strptime(date, input_format)
+            formatted_date = date_object.strftime(output_format)
             logger.debug(f"formatted date: {formatted_date}")
             return formatted_date
 
