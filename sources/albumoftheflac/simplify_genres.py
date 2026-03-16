@@ -6,8 +6,6 @@ SIMPLIFIED_GENRES = {
         "Political Hip Hop",
         "Gangsta Rap",
     ],
-    "Emo": ["Midwest Emo"],
-    "House": ["French House"],
 }
 
 
