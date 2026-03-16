@@ -2,7 +2,7 @@
 from datetime import datetime
 
 
-def parse_date(date: str):
+def parse_date(date: str) -> str:
     formats = ["%B %d, %Y", "%B %Y", "%Y"]
 
     for format in formats:
@@ -14,6 +14,8 @@ def parse_date(date: str):
 
             if format == "%Y":
                 date_object = date_object.replace(day=0, month=0)
+
+            return date_object.strftime("%Y-%m-%d")
 
         except ValueError:
             continue
