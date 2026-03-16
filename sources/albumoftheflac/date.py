@@ -1,8 +1,13 @@
 # Standard
 from datetime import datetime
 
+# Third party
+from loguru import logger
+
 
 def parse_date(date: str) -> str:
+    logger.debug(f"raw date: {date}")
+
     date = date.replace("\xa0", " ")
     date = " ".join(date.split())
     date = date.strip()
@@ -19,7 +24,9 @@ def parse_date(date: str) -> str:
             if format == "%Y":
                 date_object = date_object.replace(day=0, month=0)
 
-            return date_object.strftime("%Y-%m-%d")
+            formatted_date = date_object.strftime("%Y-%m-%d")
+            logger.debug(f"formatted date: {formatted_date}")
+            return formatted_date
 
         except ValueError:
             continue
