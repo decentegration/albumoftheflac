@@ -1,6 +1,5 @@
 # Standard
 import re
-from datetime import datetime
 from pathlib import Path
 
 # Third party
@@ -15,6 +14,7 @@ from albumoftheflac.aoty_parsing import (
     get_date_from_album_page,
     get_genres_from_album_page,
 )
+from albumoftheflac.date import parse_date
 from albumoftheflac.tags import export_tags, get_tag, set_tag
 from albumoftheflac.text import replace_spaces_with_pluses
 
@@ -50,8 +50,8 @@ async def set_correct_tags(directory: Path):
     date = get_date_from_album_page(album_page).split("/")[0]
     date = re.sub(r"([a-zA-Z]+)(\d{1,2})", r"\1 \2", date)
     date = re.sub(r"(\d{1,2}),(\d{4})", r"\1, \2", date)
-    date_object = datetime.strptime(date, "%B %d, %Y")
-    formatted_date = date_object.strftime("%Y-%m-%d")
+
+    formatted_date = parse_date(date)
 
     # set tags
     set_tag(directory, "originaldate", formatted_date)
