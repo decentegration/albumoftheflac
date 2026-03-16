@@ -3,6 +3,10 @@ from datetime import datetime
 
 
 def parse_date(date: str) -> str:
+    date = date.replace("\xa0", " ")
+    date = " ".join(date.split())
+    date = date.strip()
+
     formats = ["%B %d, %Y", "%B %Y", "%Y"]
 
     for format in formats:
