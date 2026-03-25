@@ -112,6 +112,8 @@ uv run aotf /path/to/album -n
 - `GENRE=Hip Hop, Jazz Rap`
 - `ORIGINALDATE=2015-03-15`
 
+<img width="1876" height="316" alt="image" src="https://github.com/user-attachments/assets/529533a3-605f-4306-a55f-ca66392eb642" />
+
 ## Структура проекта
 
 ```text
