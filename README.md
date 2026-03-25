@@ -109,7 +109,7 @@ uv run aotf /path/to/album -n
 
 после запуска утилита может проставить, например:
 
-- `GENRE=Hip Hop, Jazz Rap, West Coast Hip Hop`
+- `GENRE=Hip Hop, Jazz Rap`
 - `ORIGINALDATE=2015-03-15`
 
 ## Структура проекта
