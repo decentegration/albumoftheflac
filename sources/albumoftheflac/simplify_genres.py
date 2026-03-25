@@ -5,6 +5,7 @@ SIMPLIFIED_GENRES = {
         "East Coast Hip Hop",
         "Political Hip Hop",
         "Gangsta Rap",
+        "Abstract Hip Hop",
     ],
 }
 
