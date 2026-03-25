@@ -7,6 +7,7 @@ SIMPLIFIED_GENRES = {
         "Gangsta Rap",
         "Abstract Hip Hop",
     ],
+    "Heavy Metal": ["NWOBHM"],
 }
 
 
