@@ -68,7 +68,7 @@ sudo apt install flac
 
 ### Python-зависимости
 
-Если используешь `uv`:
+При использовании `uv`:
 
 ```bash
 uv sync
