@@ -79,8 +79,25 @@ def get_album_link(html_content: str) -> str | None:
 
 def get_genres_from_album_page(html_content: str) -> str:
     soup = BeautifulSoup(html_content, "html.parser")
-    genre_meta_tags = soup.find_all("meta", itemprop="genre")
-    genres = [tag.get("content") for tag in genre_meta_tags]
+    genres = []
+
+    for row in soup.find_all("div", class_="detailRow"):
+        label = row.find("span")
+        if not label or "Genre" not in label.get_text():
+            continue
+
+        genre_links = row.select('a[href*="/genre/"]')
+        genres = [
+            link.get_text(strip=True)
+            for link in genre_links
+            if not link.select_one(".secondary")
+        ]
+        logger.debug("Found primary genres from album details: {}", genres)
+        break
+
+    if not genres:
+        logger.warning("Genres were not found on album page")
+
     genres_string = ", ".join(genres)
 
     return genres_string
